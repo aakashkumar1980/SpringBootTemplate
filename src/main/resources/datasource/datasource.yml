@@ -1,0 +1,38 @@
+#########################
+### DB Configurations ###
+#########################
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    validation-query: select 1 from dual
+    cachePrepStmts: true
+    prepStmtCacheSize: 250
+    prepStmtCacheSqlLimit: 2048
+    useServerPrepStmts: true
+    
+    ### Hikari Connection Pool Configurations ###
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      # the minimum number of idle connections that is maintained by HikariCP in connection pool.    
+      minimum-idle: 10
+      # the maximum amount of time in milliseconds that a connection is allowed to sit idle in connection pool (here 20 mins).
+      hikari.idle-timeout: 1200000
+      # the maximum pool size.
+      maximum-pool-size: 40
+      # the maximum number of milliseconds that a client will wait for a connection from connection pool (here, 2 mins).
+      connection-timeout: 120000
+      # the maximum lifetime in milliseconds of a connection in the pool after it is closed (here 21 mins).
+      max-lifetime: 1260000
+      auto-commit: true    
+    
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+    properties.dialect: org.hibernate.dialect.H2Dialect     
+    generate-ddl: false
+    hibernate:
+      naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+      
