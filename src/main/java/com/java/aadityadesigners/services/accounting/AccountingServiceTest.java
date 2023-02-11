@@ -28,14 +28,14 @@ public class AccountingServiceTest {
     @Test
     public void getTransactionsByAccountNumber_shouldReturnListOfTransactions() {
         // Given
-        String accountNumber = "123456789";
+        String accountNumber = "SAL0AD1";
         List<Transaction> transactions = new ArrayList<>();
-        when(transactionRepository.findByAccountNumber(accountNumber))
-                .thenReturn(transactions);
-
+        
         // When
-        List<Transaction> result = accountingService.getTransactionsByAccountNumber(accountNumber);
+        when(transactionRepository.findByAccountNumber(accountNumber)).thenReturn(transactions);
         // Then
+        List<Transaction> result = accountingService.getTransactionsByAccountNumber(accountNumber);
+        
         assertTrue(result.size()==transactions.size());
     }
 
